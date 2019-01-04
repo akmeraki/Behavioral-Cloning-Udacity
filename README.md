@@ -181,63 +181,72 @@ to understand how the training data is structured. The histogram is divided by 2
 <img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/Training_data.png">
 </p>
 
-
-
-![Histogram of Steering Angles]()
-
 As seen from histogram the raw data shows that most of the angles are near the zero angle as the car is driven in the middle of the road at an angle close to zero most of the time.
-
 Hence to reduce the zero angle bias significantly, but still preserve a little zero angle bias since we want the car to drive in the middle of the road.
 
-
-
-
-
-
-
-
-
-
-
-
+<p align="center">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/Histogram_of_training.png">
+</p>
 
 ## Data Preprocessing
 
 There are three main steps to data preprocessing:
-- Resizing the image from (320px, 160px) original size to (80px, 40px) using OpenCV resize method in line 54 `img = cv2.resize(img, target_shape)`.
-- Color space conversion - the image is converted to HVS format and only the S channel
-   is used.
+- Data is split into Training and validation data and visualized.
+- Color space conversion - the image color space is converted from RGB to YUV format,a as this helps the nvidia model to learn better as prosed from the nividia paper.
+- Resizing the image from (320px, 160px) original size to (200px, 66px) using OpenCV resize.
 - Normalization - scaling the data to the range of 0-1
 
-I choose only one channel (Satuation) as it might reduce the burden of proceessing and
-inturn reduce the computational power reduired. Unlike others i havent cropped the images
-because cropping might work here.but in case of a real time situation where there is a
-traffic sign or light overhead that might be missed. Making the model process whole of
-RGB is might again incur more processing power so RGB is converted to HSV in
-`img = cv2.cvtColor(img, cv2.COLOR_BGR2HLS)` line 55 model.py and only Satutation is
-used `img = img[:,:,2]`
+<p align="center">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/cropped_images/Comparison%20of%20Preprocessed%20and%20Original%20Image.png">
+</p>
 
 
+I choose only one channel (Satuation) as it might reduce the burden of proceessing and in turn reduce the computational power reduired.
+
+# Data Augmentation techniques
+
+We utilize many Augmentation techniques as the training data generated in the generator is not enough to train the model.
+We use many image Augmentation Techniques like zooming, panning, changing brightness, flipping .
+
+#### Comparison of Zoomed and original Image
+<p align="center">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/cropped_images/Comparison%20of%20Zoomed%20and%20Original%20Image.png">
+</p>
+
+#### Comparison of Panned and original Image
+
+<p align="center">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/cropped_images/Comparison%20of%20Panning%20and%20Original%20Image.png">
+</p>
 
 
+#### Comparison of brightness altered and original Image
 
+<p align="center">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/cropped_images/Comparison%20of%20random_brightness_image%20and%20Original.png">
+</p>
 
+#### Comparison of Flipped and original Image
 
-
-
-
-
-
-
-
+<p align="center">
+<img src="<p align="center">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/cropped_images/Comparison%20of%20random_brightness_image%20and%20Original.png">
+</p>
 
 
 ## Batch Generators
 
-There are two multithreaded nested generators supporting train, val and test sets. The
-outer bach generator called threaded_generator which consists of producer and consumer
+There are two multithreaded nested generators supporting train, val and test sets. The outer batch generator called threaded_generator which consists of producer and consumer
 launches the inner batch generator called batch_generator in a separate thread and
 caches 10 output.
+
+
+#### Displaying the Augmented batch generated Training data
+
+<p align="center">
+<img src="<p align="center">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/comparison%20of%20Augmented%20images%20with%20the%20Original%20Images%20.png">
+</p>
 
 To support three data types the batch generator accepts the batch size
 a second parameter that selects the type such as train val or test.
