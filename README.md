@@ -192,7 +192,7 @@ Hence to reduce the zero angle bias significantly, but still preserve a little z
 
 There are three main steps to data preprocessing:
 - Data is split into Training and validation data and visualized.
-- Color space conversion - the image color space is converted from RGB to YUV format,a as this helps the nvidia model to learn better as prosed from the nividia paper.
+- Color space conversion - the image color space is converted from RGB to YUV format,as this helps the nvidia model to learn better as prosed from the nividia paper.
 - Resizing the image from (320px, 160px) original size to (200px, 66px) using OpenCV resize.
 - Normalization - scaling the data to the range of 0-1
 
@@ -203,7 +203,7 @@ There are three main steps to data preprocessing:
 
 I choose only one channel (Satuation) as it might reduce the burden of proceessing and in turn reduce the computational power reduired.
 
-# Data Augmentation techniques
+## Data Augmentation techniques
 
 We utilize many Augmentation techniques as the training data generated in the generator is not enough to train the model.
 We use many image Augmentation Techniques like zooming, panning, changing brightness, flipping .
@@ -230,7 +230,7 @@ We use many image Augmentation Techniques like zooming, panning, changing bright
 
 <p align="center">
 <img src="<p align="center">
-<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/cropped_images/Comparison%20of%20random_brightness_image%20and%20Original.png">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/cropped_images/Comparison%20of%20Flipped%20Image%20and%20Original%20Image.png">
 </p>
 
 
@@ -268,13 +268,15 @@ and -0.1 respectively.
 
 - Based on the Cheatsheet (https://carnd-forums.udacity.com/cq/viewquestion.action?id=26214464&questionTitle=behavioral-cloning-cheatsheet) i tired keeping the epoch low as 5. But it didnt work in my case unless its 18-20 so i kept it to the max 20.
 
--Removing relu activations on the
--
--
+- Tried to reduce the dropout layers as the there was a significantly large gap between training and validation loss curves.
 
-- I tried to make my model work in track 2 it was unsuccessful. Its due to my models choice. Thought its not counted for evaluation. I found that making use of all the parameters instead of only satuation might have solved this problem.
+- With better data added into the Training data, the car able to generalize better.
 
-- I tried to work as simalr to the NVIDIA Model but that had 5 convolution layers, but to optimize mine i finilized to 3 convoliton layers each
+- Removing relu activations on the architecture and adding elu (exponential linear units) instead since this takes care of the vanishing gradient problem.
+
+- I tried to make my model work in track 2 it was unsuccessful. Its due to my models choice.
+
+- I tried to work as simalar to the NVIDIA Model but that had 5 convolution layers, but to optimize mine i finilized to 3 convolution layers each.
 
 ## Results and Conclusion
 
