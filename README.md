@@ -3,6 +3,7 @@
 
 #[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
+![](https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/ezgif.com-gif-maker.gif)
 
 ### Overview
 The objective of this project is to clone human driving behavior by use of Convolutional Neural Network in a simulated driving application, we are going to use a Udacity developed Car Simulator using Unity game engine. The simulator consists of training and Autonomous modes to rive the car. First, during the training session, we will navigate our car inside the simulator using the keyboard or a joystick for continuous motion of the steering angle. While we navigating the car the simulator records training images and respective steering angles. Then we use those recorded data to train our neural network. It uses the trained model to predict steering angles for a car in the simulator given a frame from the central camera.
