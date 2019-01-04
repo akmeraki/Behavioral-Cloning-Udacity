@@ -177,7 +177,13 @@ Four laps in the forward direction and four laps in the reverse direction would 
 The training data obtained can be visualized in the form of a histogram
 to understand how the training data is structured. The histogram is divided by 25 bins, and each bin represents a steering angle ranging from -1 to 1 .
 
-![Histogram of Steering Angles](https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/Training_data.png)
+<p align="center">
+<img src="https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/Training_data.png">
+</p>
+
+
+
+![Histogram of Steering Angles]()
 
 As seen from histogram the raw data shows that most of the angles are near the zero angle as the car is driven in the middle of the road at an angle close to zero most of the time.
 
@@ -266,5 +272,7 @@ and -0.1 respectively.
 Like almost all machine learning projects, this is project is no exception, Our model is only as good as our data is. The key to this project is to have a good training data. There were instances in this project that were quite frustrating to be honest, because my car would sway to edge of the lane, and jump off the road. I added in a few recovery laps, this solved the problem. Now the network had learned to sway back to the middle of the road, if it had gone too close to the edge.
 
 This project, I was working on a regression problem in the terms of self-driving cars. We mainly focused on finding a suitable network architecture and trained a model a dataset. According to Mean Square Error (MSE) the model worked well. Next generating new new dataset was the problem here. Additionally, we didn't fully rely on MSE when building our final model. Also, we use relatively number of training epochs (namely 20 epochs).
+
+![Click here to view the complete Video of the Self-Driving car in Youtube.](https://www.youtube.com/watch?v=mjknidprRE)
 
 [![Final Output](https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/Self_Driving_Car_Nanodegree_Program.png)](https://www.youtube.com/watch?v=mjknidprREo)
