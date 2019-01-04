@@ -16,6 +16,8 @@ The objective of this project is to clone human driving behavior by use of Convo
 
 This project requires **Python 3.6** and the following Python libraries installed:
 Please utilize the environment file to install related packages.
+
+- [Environment File](https://github.com/akmeraki/Behavioral-Cloning-Udacity/tree/master/Environment)
 - [Keras](https://keras.io/)
 - [NumPy](http://www.numpy.org/)
 - [Scikit-learn](http://scikit-learn.org/)
@@ -29,7 +31,7 @@ Please utilize the environment file to install related packages.
 - model.h5 - The model weights.
 - model-test1.json model-test1.h5 -
 
-### Stimulator
+### Simulator
 
 You can download the stimulator from this Udacity repository : [Udacity Self Driving Car Simulator](https://github.com/udacity/self-driving-car-sim)
 
@@ -43,7 +45,7 @@ You can set the folder path at line 17 in model.py make sure that your folder co
 ### My driving data
 
 [Training Data](https://drive.google.com/file/d/0Bw2un6-T5az-R3JxQ1lFUDlQRzQ/view?usp=sharing) <br>
-[Udacity test set](https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip <br>)
+[Udacity test Dataset](https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip) <br>
 
 ### How to Run the Model
 
@@ -162,7 +164,7 @@ Here is the network architecture as shown by keras
 
 ## Collecting Data
 
-Obtaining the good training data, is crucial for the model to run well. As, we will see in the results section that, this was the main problem I faced while training my model. How well the neural network drives depends on how well we drive the car in the training mode.
+Obtaining good training data, is crucial for the model to run well. As, we will see in the results section that, this was the main problem I faced while training my model. How well the neural network drives depends on how well we drive the car in the training mode.
 The training data can be collected from the udacity simulator in the training mode.
 I tried to keep the car in the middle of the road for the entire laps.
 Four laps in the forward direction and four laps in the reverse direction would be enough for the training data. It is crucial to do it in both ways, as we don't want the model to have a steering bias as the forward direction mostly contains only left turns.
@@ -173,7 +175,13 @@ Four laps in the forward direction and four laps in the reverse direction would 
 # Balancing the Data
 
 The training data obtained can be visualized in the form of a histogram
+to understand how the training data is structured. The histogram is divided by 25 bins, and each bin represents a steering angle ranging from -1 to 1 .
 
+![Histogram of Steering Angles](https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/Training_data.png)
+
+As seen from histogram the raw data shows that most of the angles are near the zero angle as the car is driven in the middle of the road at an angle close to zero most of the time.
+
+Hence to reduce the zero angle bias significantly, but still preserve a little zero angle bias since we want the car to drive in the middle of the road.
 
 
 
@@ -259,4 +267,4 @@ Like almost all machine learning projects, this is project is no exception, Our 
 
 This project, I was working on a regression problem in the terms of self-driving cars. We mainly focused on finding a suitable network architecture and trained a model a dataset. According to Mean Square Error (MSE) the model worked well. Next generating new new dataset was the problem here. Additionally, we didn't fully rely on MSE when building our final model. Also, we use relatively number of training epochs (namely 20 epochs).
 
-[![Final Output]()](https://www.youtube.com/watch?v=mjknidprREo)
+[![Final Output](https://github.com/akmeraki/Behavioral-Cloning-Udacity/blob/master/Images/Self_Driving_Car_Nanodegree_Program.png)](https://www.youtube.com/watch?v=mjknidprREo)
